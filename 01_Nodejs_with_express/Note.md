@@ -32,3 +32,25 @@
 7. 寫一些 code
 
 8. 啟動服務：`npm start` 或 `nodemon start`
+
+9. 使用 pug 樣版引擎：`npm i pug --save`
+
+10. app.set("view engine", "pug");
+
+11. 建立 Views 資料夾，並在內建立 index.pug
+
+12. 建立 routes 資料夾，新增 middleware 檔案（如：product.js）
+
+## Route
+
+- 在 server.js 內：不同路徑回傳不同內容
+
+## res.render
+
+- 可以使用樣版引擎渲染網頁（動態生成 HTML）
+- express 使用 jade, pug, ejs, hbs, hjs, twig, vash
+
+## router middleware
+
+- 當網站有很多路由，或同一個路由下，有很多子路由時，會不易管理
+- 所以會使用 middleware 來管理
