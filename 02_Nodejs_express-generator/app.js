@@ -7,6 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var moduleRouter = require('./routes/module');
 var routeRouter = require('./routes/route');
+var ajaxRouter = require('./routes/ajax');
 var usersRouter = require('./routes/users');
 
 var app = express();
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public'))); // Can access static fi
 app.use('/', indexRouter);
 app.use('/module', moduleRouter);
 app.use('/route', routeRouter);
+app.use('/ajax', ajaxRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

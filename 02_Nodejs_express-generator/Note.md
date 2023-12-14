@@ -100,9 +100,15 @@
 
 ---
 
-## Ajax 非同步請求
+## Ajax 非同步請求 (參考 ajax.js)
 
 不刷新頁面的方式更新頁面資料
+
+### 引入 jquery
+
+1. 至 jsdelivr 下載 jquery
+
+2. 放在 pug content 最後面
 
 ### 一般語法
 
