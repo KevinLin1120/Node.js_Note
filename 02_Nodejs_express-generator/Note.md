@@ -21,7 +21,7 @@
 
 6. 運行專案：`npm start`
 
-7. 建立 modules 資料夾
+---
 
 ## Project Files
 
@@ -43,9 +43,23 @@
 
 ## Modules
 
-1. 避免混淆我們可以另建一資料夾放自訂模組
+### 定義
 
-2. 不管是路由或 app.js，最後一行都是用模組方式輸出，讓其他程式可以使用
+1. 建立 modules 資料夾 (避免與原先 node_module 混淆)
+
+2. 在 modules 資料夾自訂模組 `test.js`（參考 modules 資料夾的 test.js）
+
+    - Note: 不管是路由或 app.js，最後一行都是用模組方式輸出，讓其他程式可以使用
+
+### 使用
+
+參考 routes > modules.js
+
+引入模組：`let test = require("../modules/test");`
+
+使用模組方法：`test.METHOD(parm1, parm2);`
+
+---
 
 ## Request method
 
@@ -54,3 +68,64 @@
 |Header|V|V|
 |Body|X|V|
 |Note||機密資訊會放 body|
+
+![app.js](./note_img/getReq.png)
+
+![app.js](./note_img/postReq.png)
+
+參考 routes > route.js
+
+![app.js](./note_img/reqMethod.png)
+
+### Callback function 回調函數
+
+分為 req 請求，res 回覆
+
+- req:
+
+  - req.body: 取得 POST 中 Body 內容
+  ![req.body](./note_img/reqMethod.png)
+
+  - req.query: 取得 GET / POST 請求的查詢內容
+  ![req.body](./note_img/reqQuery.png)
+
+  - req.params: 取得 GET / POST 請求中，API 帶入參數
+  注：params 請求路徑應為 `路徑/router:param_name`
+  ![req.body](./note_img/reqParams.png)
+
+- res:
+![req.content](./note_img/resContent.png)
+
+![middleware](./note_img/middleware.png)
+
+---
+
+## Ajax 非同步請求
+
+不刷新頁面的方式更新頁面資料
+
+### 一般語法
+
+```JavaScript
+$.ajax(
+    url: "API",
+    contentType: "application/x-www-form-urlencoded",
+    data: "DATA",
+    type: "POST",
+    datatype: "後端回傳的資料型態" 
+    success: function(res) {
+
+    },
+    error: function(){
+
+    }
+)
+```
+
+- 傳入：一個物件，包含許多屬性與方法
+
+![""](./note_img/ajax00.png)
+
+### 簡易語法
+
+![""](./note_img/ajax01.png)

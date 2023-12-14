@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser'); // Parse cookie from web
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
+var moduleRouter = require('./routes/module');
+var routeRouter = require('./routes/route');
 var usersRouter = require('./routes/users');
 
 var app = express();
@@ -20,6 +22,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public'))); // Can access static files from public folder
 
 app.use('/', indexRouter);
+app.use('/module', moduleRouter);
+app.use('/route', routeRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
