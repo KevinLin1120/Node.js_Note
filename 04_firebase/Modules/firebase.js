@@ -49,7 +49,7 @@ const initializeFirebaseApp = () => {
         app = initializeApp(firebaseConfig);
         db = getFirestore();
 
-        // storage = getStorage();
+        storage = getStorage();
         // storageRef = ref(storage, 'images/test_photo.png');
         // imageRef = ref(storage, 'images');
         // testImgRef = ref(storage, 'images/test.png');
@@ -139,16 +139,18 @@ const deleteData = async () => {
 const uploadImg = async () => {
     try {
         // 讀取本地檔案
-        const fs = require('fs');
-        const fileData = fs.readFileSync('./public/images/test.png');
+        // const fs = require('fs');
+        // const fileData = fs.readFileSync('./public/images/test.png');
 
-        console.log(fileData);
+        // console.log(fileData);
 
-        // 上傳檔案
-        uploadBytes(testImgRef, fileData)
-            .then((snapshot) => {
-                console.log("檔案已成功上傳");
-            })
+        // // 上傳檔案
+        // uploadBytes(testImgRef, fileData)
+        //     .then((snapshot) => {
+        //         console.log("檔案已成功上傳");
+        //     })
+        let bucket = storage.bucket;
+        bucket.upload("./public/images/test.png");
 
     } catch (e) {
         console.error("上傳錯誤：", e);

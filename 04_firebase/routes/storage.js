@@ -20,14 +20,14 @@ router.get('/', function (req, res, next) {
 // router.post('/upload', upload.single("file"), function (req, res) {
 //     try {
 //         const file = req.file;
-    
+
 //         if (!file) {
 //           return res.status(400).send('No file uploaded.');
 //         }
-    
+
 //         // 创建文件在存储桶中的路径和文件名
 //         const filename = `${Date.now()}-${file.originalname}`;
-    
+
 //         // 上传文件到 Firebase Storage
 //         const fileUpload = bucket.file(filename);
 //         const stream = fileUpload.createWriteStream({
@@ -36,23 +36,28 @@ router.get('/', function (req, res, next) {
 //           },
 //           resumable: false,
 //         });
-    
+
 //         stream.on('error', (error) => {
 //           console.error(error);
 //           return res.status(500).send('Upload failed');
 //         });
-    
+
 //         stream.on('finish', () => {
 //           // 文件上传成功
 //           const publicUrl = `https://storage.googleapis.com/${bucket.name}/${filename}`;
 //           return res.status(200).json({ url: publicUrl });
 //         });
-    
+
 //         stream.end(file.buffer);
 //       } catch (error) {
 //         console.error(error);
 //         return res.status(500).send('Internal Server Error');
 //       }    
 // });
+
+router.get('/upload', async function (req, res, next) {
+    await firebaseAdmin.uploadImg();
+    res.send(200);
+});
 
 module.exports = router;
